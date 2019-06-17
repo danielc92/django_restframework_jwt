@@ -27,9 +27,20 @@ git clone https://github.com/danielc92/django_restframework_jwt.git
 - `djangorestframework==3.9.4`
 - `djangorestframework-simplejwt==4.3.0`
 
-# Tests
-- Authorized using JWT
-- Blocked access without supplying JWT Bearer info
+# Screenshots
+
+### Successful auth attempt
+Return a valid 
+![Successful authorization attempt](https://github.com/danielc92/django_restframework_jwt/blob/master/screenshots/auth-attempt.jpg) 
+
+### Unsuccesful GET request to `languages/` (invalid token)
+![Wrong token provided with GET request](https://github.com/danielc92/django_restframework_jwt/blob/master/screenshots/wrong-token.jpg) 
+
+### Successful GET request to `/languages`
+![Successful languages GET request](https://github.com/danielc92/django_restframework_jwt/blob/master/screenshots/languages-get.jpg) 
+
+
+
 
 # Contributors
 - Daniel Corcoran
