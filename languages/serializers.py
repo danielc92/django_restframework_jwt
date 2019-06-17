@@ -4,4 +4,4 @@ from .models import Language
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Language
-        fields = ('name', 'year', 'pred')
+        fields = ('id', 'name', 'year', 'developer_company', 'predescessors')
