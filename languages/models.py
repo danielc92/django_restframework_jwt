@@ -11,7 +11,7 @@ class Language(models.Model):
     added = models.DateTimeField(default=timezone.now)
 
 
-class Programmers(models.Model):
+class Programmer(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     profession = models.CharField(max_length=100)
