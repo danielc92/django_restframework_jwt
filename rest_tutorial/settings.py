@@ -43,8 +43,15 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
+    # Pagination settings for rest responses
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    
+    # Authenticates with the in-built User Model.
+    'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAuthenticated',),
+    
+    # Authentication with JWT tokens (if enabled the DEFAULT_PERSMISSION_CLASSES will not work!)
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication', )
 }
 
 MIDDLEWARE = [

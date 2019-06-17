@@ -17,5 +17,5 @@ class Programmer(models.Model):
     profession = models.CharField(max_length=100)
     languages = models.ManyToManyField(Language)
 
-    created_at models.DateTimeField(auto_now_add= True)
+    created_at=models.DateTimeField(auto_now_add= True)
     modified_at = models.DateTimeField(auto_now=True)
