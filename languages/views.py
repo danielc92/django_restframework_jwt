@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .modesl import Language
-from .serializer import LanguageSerializer
+from .models import Language
+from .serializers import LanguageSerializer
 
 # Create your views here.
 class LanguageView(viewsets.ModelViewSet):
