@@ -1,8 +1,11 @@
-# Order System
+# JWT (JSON Web Tokens) with Django REST Framework
 Implementation of JSON Web Token authorization with a Django REST-API.
 
 # Before you get started
-- Understanding of 
+- Understanding of APIs
+- Understanding of POST, GET requests
+- Usage of tool such as POSTMAN (optional)
+- Understanding of Django
 
 # Available Routes
 - `http://localhost:8000/` FILLIN
