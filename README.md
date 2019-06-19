@@ -42,6 +42,46 @@ Returns a valid token with refresh and access keys.
 # Contributors
 - Daniel Corcoran
 
+# Notes for auto foreign key (request.user object)
+```python
+# In serializers.py
+class ThingSerializer(serializers.ModelSerializer):
+
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = Thing
+        fields = ('id', 'name', 'colour', 'owner')
+
+# In views.py
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+    """
+    Custom permission to only allow owners of an object to edit it.
+    """
+
+    def has_object_permission(self, request, view, obj):
+        # Read permissions are allowed to any request,
+        # so we'll always allow GET, HEAD or OPTIONS requests.
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # Write permissions are only allowed to the owner of the snippet.
+        return obj.owner == request.user
+
+
+
+class ThingViewSet(viewsets.ModelViewSet):
+
+    queryset = Thing.objects.all()
+    serializer_class = ThingSerializer
+    permission_classes = (IsOwnerOrReadOnly, permissions.IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(owner = self.request.user)
+```
+
+
 # Sources
 - Language data pulled from Wikipedia
 - [Documentation for `djangorestframework-simplejwt` library](https://pypi.org/project/djangorestframework-simplejwt/)
